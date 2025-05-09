@@ -1,4 +1,3 @@
-    # 个人修改代码
     def get_topk_similar_entities(self, query_emb, k=1) -> List[Node]:
         res = []
         query = """
