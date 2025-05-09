@@ -3,7 +3,7 @@
 ## 引言：
 - TinyGraphRAG是一个基于GraphRAG的简化版本，包含了GraphRAG的核心功能: 1.知识图谱构建；2.图检索优化；3.生成增强。创建GraphRAG项目的目的是帮助大家理解GraphRAG的原理并提供Demo来实现。
 - 本项目中信息传输的总体流程如下所示：
-    ![](images/TinyGraphRAG信息传输流程.png)
+    ![](images/Tiny-GraphRAG信息传输流程.png)
 - 用通俗语言来描述就是：**输入问题后，通过图结构运算层的计算，将得到的上下文交给一个“聪明的学生”（即大语言模型 LLM），让它基于这些上下文进行推理和回答问题。**
 ## 正文：
 >正文包括三部分：1.GraphRAG简要介绍；2.TinyGraphRAG 使用方法；3.TinyGraphRAG代码解读
