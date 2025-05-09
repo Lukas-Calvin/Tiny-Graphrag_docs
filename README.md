@@ -1,5 +1,5 @@
-# Tiny-Graphrag
->此README包括三部分：1.引言；2.正文；3.Reference& Acknowledgment
+# Tiny-Graphrag参考学习流程
+>此README包括两部分：1.引言；2.正文
 ## 引言：
 - Tiny-Graphrag是一个基于Graphrag的简化版本，包含了Graphrag的核心功能: 1.知识图谱构建；2.图检索优化；3.生成增强。创建Graphrag项目的目的是帮助大家理解Graphrag的原理并提供Demo来实现。
 - 本项目中信息传输的总体流程如下所示：
@@ -564,8 +564,3 @@
   <img src="https://github.com/Lukas-Calvin/Tiny-Graphrag_docs/blob/main/images/运行结果.png" width="1000">
 </div>
 
-## Reference & Acknowledgment
-- 编写 Tiny-Graphrag 的过程中，我们参考了以下项目：
-    - [Graphrag](https://github.com/microsoft/graphrag)
-    - [nano-graphrag](https://github.com/gusye1234/nano-graphrag)
-- 需要说明的是，Tiny-Graphrag 是一个简化版本的 Graphrag 实现，并不适用于生产环境，如果你需要一个更完整的 Graphrag 实现，我们建议你使用上述项目。
