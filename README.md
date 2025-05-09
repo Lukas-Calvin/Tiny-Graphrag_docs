@@ -435,7 +435,7 @@
 - 最终生成的图数据信息如下所示：
   
 <div align="center">
-    <img src="https://github.com/Lukas-Calvin/Tiny-Graphrag_docs/blob/main/images/图数据库信息.png" width="800px">
+    <img src="https://github.com/Lukas-Calvin/Tiny-Graphrag_docs/blob/main/images/图数据库示例.png" width="800px">
 </div>
   
 ###### 1.3.9 验证下数据库连接是否正常（当然，此步也可省略）
