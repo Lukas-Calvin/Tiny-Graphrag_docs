@@ -27,6 +27,11 @@
   - 本项目给出了TinyGraphRAG使用方法，初学者可以先直接跑通这个程序，然后再继续了解具体原理。这样的学习曲线更缓和，能有效防止卡在代码理解层面而对代码的整体作用缺少理解，难以应用。下面给出TinyGraphRAG使用的具体方法。
   - TinyGraphRAG 使用方法
     - 个人主机环境：ubuntu24.04
+    - 代码下载
+      ```bash
+        git clone https://github.com/limafang/tiny-graphrag.git
+        cd tiny-graphrag
+      ```
     - 主机环境配置
       1. 安装：`neo4j --version 5.26.5`，可使用wget配合pip来完成
       2. 安装插件：`GDS`。 可从github上找到与`neo4j 5.26.5`**兼容**的`GDS 2.13.2`，将这个.jar文件放到neo4j的插件文件夹里。
