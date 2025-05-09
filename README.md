@@ -548,7 +548,7 @@
 1. 通俗来讲就是：将得到的上下文输入给大模型，基于此上下文，大模型作推理和回答
 2. 在本项目代码中，`local_query`方法和`global_query`方法的将各自得到的上下文传输给大模型将是生成增强的过程。
   - 局部查询和全局查询成功运行的示例：
-![](images/成功运行的示例.png)
+![](images/运行结果.png)
 
 ## Reference & Acknowledgment
 - 编写 Tiny-Graphrag 的过程中，我们参考了以下项目：
