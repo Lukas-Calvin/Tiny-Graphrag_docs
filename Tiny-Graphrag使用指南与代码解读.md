@@ -1,4 +1,4 @@
-# Tiny-Graphrag快速使用与代码解读
+# Tiny-Graphrag使用指南与代码解读
 >此README包括两部分：1.引言；2.正文
 ## 引言：
 - Tiny-Graphrag是一个基于Graphrag的简化版本，包含了Graphrag的核心功能: 1.知识图谱构建；2.图检索优化；3.生成增强。创建Graphrag项目的目的是帮助大家理解Graphrag的原理并提供Demo来实现。
