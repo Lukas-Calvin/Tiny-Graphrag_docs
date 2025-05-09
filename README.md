@@ -1,20 +1,20 @@
-# TinyGraphRAG
+# Tiny-Graphrag
 >此README包括三部分：1.引言；2.正文；3.Reference& Acknowledgment
 ## 引言：
-- TinyGraphRAG是一个基于GraphRAG的简化版本，包含了GraphRAG的核心功能: 1.知识图谱构建；2.图检索优化；3.生成增强。创建GraphRAG项目的目的是帮助大家理解GraphRAG的原理并提供Demo来实现。
+- Tiny-Graphrag是一个基于Graphrag的简化版本，包含了Graphrag的核心功能: 1.知识图谱构建；2.图检索优化；3.生成增强。创建Graphrag项目的目的是帮助大家理解Graphrag的原理并提供Demo来实现。
 - 本项目中信息传输的总体流程如下所示：
-    ![](images/Tiny-GraphRAG信息传输流程.png)
+    ![](images/Tiny-Graphrag信息传输流程.png)
 - 用通俗语言来描述就是：**输入问题后，通过图结构运算层的计算，将得到的上下文交给一个“聪明的学生”（即大语言模型 LLM），让它基于这些上下文进行推理和回答问题。**
 ## 正文：
->正文包括三部分：1.GraphRAG简要介绍；2.TinyGraphRAG 使用方法；3.TinyGraphRAG代码解读
-### GraphRAG简要介绍
+>正文包括三部分：1.Graphrag简要介绍；2.Tiny-Graphrag 使用方法；3.Tiny-Graphrag代码解读
+### Graphrag简要介绍
 ---
 - 是什么？
-    - 基于知识图谱的检索增强生成技术，通过显式建模实体关系提升RAG的多跳推理能力。
+    - 基于知识图谱的检索增强生成技术，通过显式建模实体关系提升rag的多跳推理能力。
 - 提出时能够解决什么问题？
-    - 传统RAG的局限：单跳检索（无法回答"特朗普和拜登的母校有何共同点？"类问题） 语义相似度≠逻辑相关性     
-    - GraphRAG的改进：通过图路径实现多跳推理（如"特朗普→宾大→法学←拜登"）
-- 以微软GraphRAG为例，其核心功能如下表所示：
+    - 传统rag的局限：单跳检索（无法回答"特朗普和拜登的母校有何共同点？"类问题） 语义相似度≠逻辑相关性     
+    - Graphrag的改进：通过图路径实现多跳推理（如"特朗普→宾大→法学←拜登"）
+- 以微软Graphrag为例，其核心功能如下表所示：
 
 | 模块 | 模块描述 | 
 |:------|:-----|
@@ -22,10 +22,10 @@
 | 图检索优化   | 基于图谱的拓扑关系（如多跳路径、子图匹配）改进传统向量检索。    | 
 | 生成增强    | 利用检索到的图结构（如子图、路径）增强大模型的生成逻辑性和准确性。  | 
 
-### TinyGraphRAG 使用方法
+### Tiny-Graphrag 使用方法
 ---
-  - 本项目给出了TinyGraphRAG使用方法，初学者可以先直接跑通这个程序，然后再继续了解具体原理。这样的学习曲线更缓和，能有效防止卡在代码理解层面而对代码的整体作用缺少理解，难以应用。下面给出TinyGraphRAG使用的具体方法。
-  - TinyGraphRAG 使用方法
+  - 本项目给出了Tiny-Graphrag使用方法，初学者可以先直接跑通这个程序，然后再继续了解具体原理。这样的学习曲线更缓和，能有效防止卡在代码理解层面而对代码的整体作用缺少理解，难以应用。下面给出Tiny-Graphrag使用的具体方法。
+  - Tiny-Graphrag 使用方法
     - 个人主机环境：ubuntu24.04
     - 代码下载
       ```bash
@@ -38,24 +38,24 @@
       3. 安装：`OpenJDK-21`。命令行`sudo apt install openjdk-21-jre-headless`
     - 使用conda创建虚拟环境（虚拟环境创建此处仅作参考，学习者可以使用自己常用的开发环境来运行）
         ```bash
-        conda create --name TinyGraphRAG_2025-04 python=3.10 -y # 虚拟环境创建
+        conda create --name Tiny-Graphrag_2025-04 python=3.10 -y # 虚拟环境创建
         conda activate TinyEval_2025-04 # 命令行激活虚拟环境
         conda install pip -y # 在conda环境内安装pip包管理工具
         ```
     - 环境中安装requirements.txt中的依赖，对应命令行为`pip install -r requirements.txt`
     - 先运行Neo4j，命令行为：`sudo neo4j start`，然后在浏览器中登陆到neo4j，默认网址为：http://localhost:7474
-    - 运行`TinyGraphRAG_test.ipynb`
+    - 运行`Tiny-Graphrag_test.ipynb`
       - 注意每次全部重新运行都需要重启内核，否则在本地查询等步骤会报错
       - 使用本电脑首次运行完成耗时15分钟
     - 对于非首次运行的打开过程为：
       1. 激活当前项目的对应虚拟环境
       2. 打开neo4j
-      3. 运行`TinyGraphRAG_test.ipynb`
+      3. 运行`Tiny-Graphrag_test.ipynb`
     - 其他要求：
       - 本项目以zhipuAI作为调用的大模型，需要调用其API，所以需要注册智谱API的帐号，从而获得API
-### TinyGraphRAG代码解读
+### Tiny-Graphrag代码解读
 ---
->下面将按照GraphRAG的三个核心功能来介绍本项目的代码：
+>下面将按照Graphrag的三个核心功能来介绍本项目的代码：
 #### 1. 知识图谱构建
 - 运行代码前需要启动neo4j客户端。
 - 模块导入，并添加API，其中API可以手动添加，也可以通过将API设置为环境变量的方法添加，本项目采用后者。
@@ -64,9 +64,9 @@
     import os
     import sys
 
-    from tinygraph.graph import TinyGraph
-    from tinygraph.embedding.zhipu import zhipuEmb
-    from tinygraph.llm.zhipu import zhipuLLM
+    from Tiny-Graph.graph import Tiny-Graph
+    from Tiny-Graph.embedding.zhipu import zhipuEmb
+    from Tiny-Graph.llm.zhipu import zhipuLLM
 
     from neo4j import GraphDatabase
     from dotenv import load_dotenv # 用于加载环境变量
@@ -78,7 +78,7 @@
     load_dotenv()  # 加载工作目录下的 .env 文件
     ```
 ##### 1.1 emb、llm类的实例化
--  将zhipuAi的嵌入模型（zhipuEmb）、zhipuLLM以及TinyGraph类分别实例化：
+-  将zhipuAi的嵌入模型（zhipuEmb）、zhipuLLM以及Tiny-Graph类分别实例化：
 - llm以及模型的embedding服务，依次完成实例化。其中的llm以及embedding可以根据自己的需要再调整，此处作为示例用，两者分别传入了嵌入模型 / LLM模型的名称以及API_KEY
 - 对应代码
     ```python
@@ -108,11 +108,11 @@
 - 为了调用`zhipuEmb`继承的`BaseEmb`类的属性，使用`super().__init__(model_name=model_name, **kwargs)`将模型名称传入`zhipuEmb`继承的`BaseEmb`类；
 - 而`BaseEmb`类继承自`ABC`类（`Abstract Base Class`，抽象基类）
 - `zhipuLLM`的实例化过程与此类似。
-##### 1.2 TinyGraph类的实例化
+##### 1.2 Tiny-Graph类的实例化
 - 传入了neo4j的默认网址、用户名、密码、llm、emb。
 - 对应代码
     ```python
-    graph = TinyGraph(
+    graph = Tiny-Graph(
         url="neo4j://localhost:7687",
         username="neo4j",
         password="neo4j-passwordTGR",
@@ -122,7 +122,7 @@
     ```
 - 实例化过程自动调用的`__init__`方法完成了创建Neo4j数据库驱动、设置语言模型、设置嵌入模型、设置工作目录等工作，详细注释见下方代码：
     ```python
-    class TinyGraph:
+    class Tiny-Graph:
         """
         一个用于处理图数据库和语言模型的类。
 
@@ -140,7 +140,7 @@
             working_dir: str = "workspace",  # 工作目录，默认为"workspace"
         ):
             """
-            初始化TinyGraph类。
+            初始化Tiny-Graph类。
 
             参数:
             - url: Neo4j数据库的URL
@@ -172,7 +172,7 @@
             self.loaded_documents = self.get_loaded_documents()
     ```
 ##### 1.3 添加文档到图数据库
-- 使用TinyGraph类下的`add_document`方法来将指定路径的文档添加到图数据库中`graph.add_document("example/data.md")`。该方法会自动处理文档的分块和嵌入生成，并将结果存储在图数据库中。这里的路径是相对路径，指向当前工作目录下的example/data.md文件。其主要功能如下：
+- 使用Tiny-Graph类下的`add_document`方法来将指定路径的文档添加到图数据库中`graph.add_document("example/data.md")`。该方法会自动处理文档的分块和嵌入生成，并将结果存储在图数据库中。这里的路径是相对路径，指向当前工作目录下的example/data.md文件。其主要功能如下：
 ###### 1.3.1 检查文档是否已经分块；
 - 对应代码
     ```python
@@ -437,7 +437,7 @@
     ```
 #### 2. 图检索优化
 ##### 2.1 两种图检索方法
--  按照TinyGraphRAG demo代码的执行过程，图检索优化过程有两种：分别为TinyGraph类中`local_query`方法和`global_query`方法。这两个方法通俗来讲就是根据问题（本项目中为"what is dl?"），得到了局部检索和全局检索的两种上下文，然后交给大模型来处理。
+-  按照Tiny-Graphrag demo代码的执行过程，图检索优化过程有两种：分别为Tiny-Graph类中`local_query`方法和`global_query`方法。这两个方法通俗来讲就是根据问题（本项目中为"what is dl?"），得到了局部检索和全局检索的两种上下文，然后交给大模型来处理。
   - 全局查询和局部查询的特点如下表所示：
 
 | 查询类型 | 特点 | 适用场景 |
@@ -446,7 +446,7 @@
 | 局部查询（local_query） | • 基于直接关联上下文<br>• 提取精确实体/关系<br>• 返回多部分结果 | • 精确定位<br>• 深度分析 |
 - 下面依次分析下`local_query`方法和`global_query`方法的具体实现过程。
 ##### 2.2 local_query方法
-- 在Tiny_GraphRAG_test.ipynb中，执行局部查询测试时，使用的是local_query方法
+- 在Tiny_Graphrag_test.ipynb中，执行局部查询测试时，使用的是local_query方法
     - 具体代码为：`local_res = graph.local_query("what is dl?")` 
     - 其中调用的方法`local_query("what is dl?")`，将"what is dl?"传递给`local_query()`方法，以下是`local_query()`方法的代码内容和代码解读
 - 代码内容
@@ -509,7 +509,7 @@
     - 之后的`prompt = LOCAL_QUERY.format(query=query, context=context)`可以理解为根据刚刚生成的context作为上下文，生成prompt为大模型使用。
     -  最后 ，`response = self.llm.predict(prompt)`是将上文得到的prompt传输给大模型，从而让大模型做推理和回答，然后该方法返回到`response（return response）`作为大模型的回答结果。
 ###### 2.3 global_query方法
--  在`Tiny_GraphRAG_test.ipynb`中，执行全局查询测试时，使用的是`global_query`方法
+-  在`Tiny_Graphrag_test.ipynb`中，执行全局查询测试时，使用的是`global_query`方法
       - 具体代码为：`global_res = graph.global_query("what is dl?")`
       - 其中调用的方法`global_query("what is dl?")`，将"what is dl?"传递给`global_query()`方法，以下是`global_query()`方法的代码内容和代码解读
 - 代码内容：
@@ -551,7 +551,7 @@
 ![](images/成功运行的示例.png)
 
 ## Reference & Acknowledgment
-- 编写 TinyGraphRAG 的过程中，我们参考了以下项目：
-    - [GraphRAG](https://github.com/microsoft/graphrag)
+- 编写 Tiny-Graphrag 的过程中，我们参考了以下项目：
+    - [Graphrag](https://github.com/microsoft/graphrag)
     - [nano-graphrag](https://github.com/gusye1234/nano-graphrag)
-- 需要说明的是，TinyGraphRAG 是一个简化版本的 GraphRAG 实现，并不适用于生产环境，如果你需要一个更完整的 GraphRAG 实现，我们建议你使用上述项目。
+- 需要说明的是，Tiny-Graphrag 是一个简化版本的 Graphrag 实现，并不适用于生产环境，如果你需要一个更完整的 Graphrag 实现，我们建议你使用上述项目。
