@@ -3,7 +3,11 @@
 ## 引言：
 - Tiny-Graphrag是一个基于Graphrag的简化版本，包含了Graphrag的核心功能: 1.知识图谱构建；2.图检索优化；3.生成增强。创建Graphrag项目的目的是帮助大家理解Graphrag的原理并提供Demo来实现。
 - 本项目中信息传输的总体流程如下所示：
-    ![](images/Tiny-Graphrag流程图.png){:width="50%"}
+
+<div align="center">
+    <img src="https://github.com/Lukas-Calvin/Tiny-Graphrag_docs/blob/main/images/Tiny-Graphrag%E6%B5%81%E7%A8%8B%E5%9B%BE.png" width="400px">
+</div>
+
 - 用通俗语言来描述就是：**输入问题后，通过图结构运算层的计算，将得到的上下文交给一个“聪明的学生”（即大语言模型 LLM），让它基于这些上下文进行推理和回答问题。**
 ## 正文：
 >正文包括三部分：1.Graphrag简要介绍；2.Tiny-Graphrag 使用方法；3.Tiny-Graphrag代码解读
@@ -283,7 +287,10 @@
         ```
 
 - 实体（Entities）是图数据库中的节点，表示文档中的关键概念。三元组（Triplets）是+图数据库中的边，表示实体之间的关系，Neo4j中的节点与三元组关系如下所示：
-![](images/Learning-Algorithms节点的详细信息.png)
+
+<div align="center">
+    <img src="https://github.com/Lukas-Calvin/Tiny-Graphrag_docs/blob/main/images/Learning-Algorithms%E8%8A%82%E7%82%B9%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF.png" width="800px">
+</div>
 
 ###### 1.3.4 执行实体消歧和三元组更新。实体消歧有两种方法可以选择，默认将同名实体认为是同一实体
 - 对应代码
@@ -426,7 +433,11 @@
     1. 生成嵌入：调用 self.add_embedding_for_graph() 方法：遍历图数据库中的每个实体节点；使用嵌入模型（self.embedding）计算节点描述的嵌入向量；将嵌入向量存储到节点的 embedding 属性中。
     2. 记录文档路径：调用 self.add_loaded_documents(filepath) 方法：将当前文路径添加到缓存文件中，避免重复加载。
 - 最终生成的图数据信息如下所示：
-    ![](images/图数据库信息.png)
+  
+<div align="center">
+    <img src="https://github.com/Lukas-Calvin/Tiny-Graphrag_docs/blob/main/images/图数据库信息.png" width="800px">
+</div>
+  
 ###### 1.3.9 验证下数据库连接是否正常（当然，此步也可省略）
 - 对应代码
     ```python
@@ -548,7 +559,10 @@
 1. 通俗来讲就是：将得到的上下文输入给大模型，基于此上下文，大模型作推理和回答
 2. 在本项目代码中，`local_query`方法和`global_query`方法的将各自得到的上下文传输给大模型将是生成增强的过程。
   - 局部查询和全局查询成功运行的示例：
-![](images/运行结果.png)
+
+<div align="center">
+  <img src="https://github.com/Lukas-Calvin/Tiny-Graphrag_docs/blob/main/images/运行结果.png" width="800">
+</div>
 
 ## Reference & Acknowledgment
 - 编写 Tiny-Graphrag 的过程中，我们参考了以下项目：
